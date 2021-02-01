@@ -6,8 +6,8 @@ import java.util.TreeMap;
 
 public class Index {
 
-   static final String pathDocs= "documents.data";;
-   static final String pathVoc = "vocabulary.data";
+   static final String pathDocs= "src/documents.data";;
+   static final String pathVoc = "src/vocabulary.data";
 
    static TreeMap<String,Keyword> keywords;
    static TreeMap<Integer,Document> documents;
@@ -130,6 +130,7 @@ public class Index {
         try{
             // Read from disk using FileInputStream
             System.out.println("Loading Documents..");
+            System.out.println("Working Directory = " + System.getProperty("user.dir"));
             FileInputStream f_in = new FileInputStream(pathDocs);
 
             // Read object using ObjectInputStream
@@ -147,6 +148,23 @@ public class Index {
         return null;
     }
 
+//    public static void main(String[]args)
+//    {
+//        File curDir = new File(".");
+//        getAllFiles(curDir);
+//    }
+//    private static void getAllFiles(File curDir) {
+//
+//        File[] filesList = curDir.listFiles();
+//        for(File f : filesList){
+//            if(f.isDirectory())
+//                System.out.println(f.getName());
+//            if(f.isFile()){
+//                System.out.println(f.getName());
+//            }
+//        }
+//
+//    }
 
 
 
