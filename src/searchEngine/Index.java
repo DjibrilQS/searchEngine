@@ -20,6 +20,7 @@ public class Index {
     public Index(){
         keywords = new TreeMap<String,Keyword>();
         documents = new TreeMap<Integer,Document>();
+        //test
     }
 
 
