@@ -8,11 +8,5 @@ public class Request {
 
 	private String request;
 
-	public static void main(String[] args) {
-		
-		Index d = new Index();
-		d.loadDocuments();
-		
-
-	}
+	
 }

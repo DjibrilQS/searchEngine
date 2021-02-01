@@ -6,27 +6,24 @@ import java.util.TreeMap;
 
 public class Index {
 
-   static final String pathDocs= "src/documents.data";;
-   static final String pathVoc = "src/vocabulary.data";
+   static final String pathDocs= "documents.data";;
+   static final String pathVoc = "vocabulary.data";
 
    static TreeMap<String,Keyword> keywords;
    static TreeMap<Integer,Document> documents;
 
 
 
-
-
-
     public Index(){
-        keywords = new TreeMap<String,Keyword>();
-        documents = new TreeMap<Integer,Document>();
+        keywords = loadVocabulary();
+        documents = loadDocuments();
         //test
     }
 
 
 
 
-    public Keyword getKeyword(String key){
+    public static Keyword getKeyword(String key){
 
         return keywords.get(key);
     }
@@ -40,7 +37,7 @@ public class Index {
 
 
 
-    public Document getDocument(Integer id){
+    public static Document getDocument(Integer id){
 
         return documents.get(id);
     }
@@ -84,7 +81,7 @@ public class Index {
         try{
             System.out.println("Loading keywords..");
             // Read from disk using FileInputStream
-             FileInputStream f_in = new FileInputStream(pathVoc);
+            InputStream f_in = Index.class.getClassLoader().getResourceAsStream(pathVoc);
 
             // Read object using ObjectInputStream
             ObjectInputStream obj_in = new ObjectInputStream (f_in);
@@ -132,7 +129,7 @@ public class Index {
             // Read from disk using FileInputStream
             System.out.println("Loading Documents..");
             System.out.println("Working Directory = " + System.getProperty("user.dir"));
-            FileInputStream f_in = new FileInputStream(pathDocs);
+            InputStream f_in = Index.class.getClassLoader().getResourceAsStream(pathDocs);
 
             // Read object using ObjectInputStream
             ObjectInputStream obj_in = new ObjectInputStream (f_in);
